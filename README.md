@@ -13,7 +13,7 @@ Cette application est un microservice en charge de l'envois des notification (__
 
 ### Procédure d'Installation 
 1. Clonage du projet en local
->`git clone https://ddd.com`.
+>`git clone git@gitlab.com:cryptoechangeur/microservices/notification-service.git`.
 
 2. Installation des dépendances
 > `cd notification_service` <br/>
