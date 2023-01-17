@@ -37,6 +37,7 @@ Créer un fichier `.env` à la racine du projet et ajouter le __SECRET_KEY__, le
 ### Démarage du service 
 > `python manage.py makemigrations`<br/>
 > `python manage.py migrate`<br/>
+> `python manage.py runserver`<br/>
 
 ### Démarage Celery
 > `celery -A notification_service worker --loglevel=info`
