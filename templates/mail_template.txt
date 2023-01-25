@@ -1,0 +1,20 @@
+
+{% now "H" as current_time %}
+{% if current_time > 12 %}
+Bonsoir
+{% else %}
+Bonjour
+{% endif %} {{ last_name }} {{ first_name }},
+Merci de vous être inscrit dans notre plateforme.
+
+Une dernier détail important!
+-----------------------------
+
+Il est important de valider votre inscription en cliquant sur le boutton ci-dessous
+Corfirmer l'inscription
+Si le boutton ne passe pas, vous pouvez copiez le lien suivant: {{ confirmation_url }}
+
+
+Yok Exchange © 2023.
+251 Boulevard du 20 mai - Tel: 00 00 000 000 00
+Se désinscrire

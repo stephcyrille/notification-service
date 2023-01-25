@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 from decouple import config
 
@@ -21,10 +21,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config("SECRET_KEY", default=0)
+SECRET_KEY = config("SECRET_KEY", default='')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config("DEBUG", default=0)
+DEBUG = config("DEBUG", default=1)
 
 ALLOWED_HOSTS = []
 
@@ -60,7 +60,7 @@ ROOT_URLCONF = 'notification_service.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -128,9 +128,28 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# save Celery task results in Django's database
+CELERY_RESULT_BACKEND = "django-db"
+
 # Message Broker (REDIS for Celery)
 # This configures Redis as the datastore between Django + Celery
 CELERY_BROKER_URL = config('CELERY_BROKER_REDIS_URL', default='redis://localhost:6379')
 
 # this allows you to schedule items in the Django admin.
 CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers.DatabaseScheduler'
+
+# Email backend for production
+if not DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    # SMTP server access config
+    EMAIL_HOST = config("EMAIL_HOST", default='')
+    EMAIL_PORT = config("EMAIL_PORT", default='')
+    EMAIL_HOST_USER = config("EMAIL_HOST_USER", default='')
+    DEFAULT_FROM_EMAIL = config("DEFAULT_FROM_EMAIL", default='')
+    SERVER_EMAIL = config("SERVER_EMAIL", default='')
+    EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD", default='')
+    EMAIL_TIMEOUT = int(config("EMAIL_TIMEOUT", default='5'))
+    EMAIL_USE_TLS = config("EMAIL_USE_TLS", default=True)
+

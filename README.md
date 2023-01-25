@@ -40,7 +40,7 @@ Créer un fichier `.env` à la racine du projet et ajouter le __SECRET_KEY__, le
 > `python manage.py runserver`<br/>
 
 ### Démarage Celery
-> `celery -A notification_service worker --loglevel=info`
+> `celery -A notification_service worker -l INFO -P eventlet`
 
 
 ### Routes URL
