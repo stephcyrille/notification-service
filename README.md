@@ -44,7 +44,8 @@ Créer un fichier `.env` à la racine du projet et ajouter le __SECRET_KEY__, le
 
 
 ### Routes URL
-> *http://localhost:8000/apis/v1/notifications/email/* <br/>
-> *http://localhost:8000/apis/v1/notifications/sms/*
+> *http://localhost:8000/apis/v1/notifications/email/singup/* <br/>
+> *http://localhost:8000/apis/v1/notifications/email/singnin/* <br/>
+> *http://localhost:8000/apis/v1/notifications/email/password-reset/request/*
 
 Tous est ready!

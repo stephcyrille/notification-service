@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_celery_beat',
     'django_celery_results',
-    'api',
+    'emailservice',
 ]
 
 MIDDLEWARE = [
@@ -139,7 +139,7 @@ CELERY_BROKER_URL = config('CELERY_BROKER_REDIS_URL', default='redis://localhost
 CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers.DatabaseScheduler'
 
 # Email backend for production
-if not DEBUG:
+if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

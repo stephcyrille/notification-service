@@ -1,50 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Signup Email</title>
-  <style>
-    .hgroup h1,.item .title,.logo .c-name,.name{font-weight:600}.button-wrap,.hgroup,.illustration,.item,footer{text-align:center}*{margin:0;padding:0;font-family:Varela Round,'Segoe UI',Arial,'san serif'}img{display:inline-block}.container{max-width:500px;margin:20px auto;border-radius:4px;border:1px solid rgba(0,0,0,.1);min-height:100px;position:relative}.container::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(to right,#0267c1,#d65108)}.logo{display:table;margin:30px auto 0;align-items:center;justify-content:center}.logo a,.name,.separator{display:block}.logo a{width:30px;height:30px}.logo img{width:180px}.logo .c-name{display:inline-block}.thumbs{width:100px;margin:auto;height:136px}.thumbs img{width:100%}.illustration{width:100%;box-shadow:0 10px 20px -5px rgba(0,0,0,.05);border-radius:0 0 50% 50%/1%}.illustration img{width:70%;margin:50px auto}.separator{height:3px;width:70%;margin:10px auto;background-color:rgba(0,0,0,.05);border-radius:10px;position:relative;overflow:hidden}.separator::after,.separator::before{content:'';position:absolute;top:0;height:100%;width:33%;border-radius:inherit;opacity:.05}.separator::before{left:0;background:#efa00b}.separator::after{left:initial;right:0;background:#d65108}.hgroup{padding:30px}.name{color:#0267c1;font-size:1.1rem}.hgroup h1{font-size:20px;color:#333}.hgroup h2{font-size:19px}.hgroup p{font-size:15px;color:#708090;margin-top:15px;text-align:justify;line-height:25px}.items{padding:30px;display:grid;grid-template-columns:repeat(2,1fr)}.item{width:100%;margin:0 auto 50px}.item .icon{margin-bottom:10px}.item .icon img{width:60px}.item .title{margin-bottom:5px;font-size:16px}.item .subtitle{font-size:13px;color:#708090;padding:1rem}.button-wrap{padding-top:2rem}a.explore{padding:15px 25px;font:inherit;background:linear-gradient(to right,#0267c1,#0280ef);border-radius:50px;border:0;color:#fff;margin:auto;display:inline-block;transition:.2s ease-in-out;cursor:pointer;box-shadow:0 5px 10px rgba(0,0,0,.1)}a.explore:hover{transform:translateY(-5px);box-shadow:0 15px 10px -7px rgba(0,0,0,.1)}footer{font-size:12px;color:#708090;padding:30px}.rad{margin:0!important;text-align:center!important;font-size:18px!important}.raised{font-size:16px;display:block;color:#4682b4}a{text-decoration:none;color:darkblue;}
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="logo"><img src="https://placeholder.com/wp-content/uploads/2018/10/placeholder.com-logo3.png" alt="cc-logo" border="0">
-    </div>
-    <div class="illustration">
-      <div class="hgroup">
-        <span class="name">
-          {% now "H" as current_time %}
-          {% if current_time > 12 %}
-            Bonsoir
-          {% else %}
-            Bonjour
-          {% endif %} {{ last_name }} {{ first_name }}</span>
-        <h1>Merci de vous être inscrit</h1>
-      </div>
-    </div>
-  
-    <div class="hgroup">
-      <p>
-        <span class="raised">Dernière action requise!</span>
-        Il est important de valider votre inscription en cliquant sur le boutton ci-dessous
-      </p>
-      <div class="button-wrap">
-        <a href="{{confirmation_url}}" class="explore">
-          Corfirmer l'inscription
-        </a>
-      </div>
-      <p>Si le boutton ne passe pas, vous pouvez copiez le lien suivant: <a href="{{confirmation_url}}">{{ confirmation_url }}</a></p>
-    </div>
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+  {% if email_type == 'SIGNUP' %}
+    {% include 'signup.html' %}
+  {% endif %}
 
-    <footer>
-      Yok Exchange © 2023.
-      <br>
-      251 Boulevard du 20 mai - Tel: 00 00 000 000 00 <br />
-      <a href="#">Se désinscrire</a>
-    </footer>
-  </div>
-</body>
-</html>
+  {% if email_type == 'SIGNIN' %}
+    {% include 'signin.html' %}
+  {% endif %}
+
+  {% if email_type == 'PASSRESREQ' %}
+    {% include 'pass_reset_request.html' %}
+  {% endif %}
+{% endblock %}
