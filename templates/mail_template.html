@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+  {% if email_type == 'SIGNUP' %}
+    {% include 'signup.html' %}
+  {% endif %}
+
+  {% if email_type == 'SIGNIN' %}
+    {% include 'signin.html' %}
+  {% endif %}
+
+  {% if email_type == 'PASSRESREQ' %}
+    {% include 'pass_reset_request.html' %}
+  {% endif %}
+{% endblock %}

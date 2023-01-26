@@ -1,0 +1,50 @@
+{% if email_type == 'SIGNUP' %}
+{% now "H" as current_time %}
+{% if current_time > 12 %}Bonsoir{% else %}Bonjour{% endif %} {{ last_name }} {{ first_name }},
+Merci de vous être inscrit dans notre plateforme.
+
+Un dernier détail important!
+-----------------------------
+
+Il est important de valider votre inscription en cliquant sur le bouton ci-dessous
+Confirmer l'inscription
+Si le bouton ne passe pas, vous pouvez copier le lien suivant : {{ confirmation_url }}
+{% endif %}
+
+
+{% if email_type == 'SIGNIN' %}
+Vous vous êtes authentifié à partir d'un nouveau terminal
+---------------------------------------------------------
+
+
+  Adresse IP : {{ ip_address }}
+  Nom de l'hôte: {{ hostname }}
+  Date : {{ day_date }}
+
+
+Si vous vous êtes connecté récemment et reconnaissez cette adresse IP, vous ne devez pas vous inquiéter au sujet de cet email.
+Si ce n'est pas vous qui vous êtes connecté récemment, vous devez immédiatement changer votre mot de passe. Votre mot de passe devrait être unique et ne devrait pas être utilisé pour d'autre sites ou services.
+Pour plus de protection de votre compte, pensez à activer l'authentification à deux facteurs.
+{% endif %}
+
+
+{% if email_type == 'PASSRESREQ' %}
+Réinitialiser maintenant
+------------------------
+
+Une requête de réinitialisation de mot de passes à été initialisé. Vous avez deux heures pour réinitialiser.
+Si vous ne réinitialisez pas votre mot de passes dans les deux heures, vous devriez relancer une nouvelle requête.
+Pour poursuivre le processus de réinitialisation bien vouloir cliquer sur le lien suivant :
+{{ reset_url }}
+
+
+  Adresse IP : {{ ip_address }}
+  Utilisateur: {{ user_email }}
+  Date : {{ day_date }}
+
+
+{% endif %}
+
+Ce message a été envoyé par Yok Exchange © 2023.
+251 Boulevard du 20 mai - Tel: 00 00 000 000 00
+Se désinscrire

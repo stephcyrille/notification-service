@@ -1,0 +1,25 @@
+<div>
+  <div class="hgroup">
+    <span class="name">
+      {% now "H" as current_time %}
+      {% if current_time > 12 %}
+        Bonsoir
+      {% else %}
+        Bonjour
+      {% endif %} {{ last_name }} {{ first_name }}</span>
+    <h1>Merci de vous être inscrit</h1>
+  </div>
+</div>
+
+<div class="hgroup">
+  <p>
+    <span class="raised">Dernière action requise!</span>
+    Il est important de valider votre inscription en cliquant sur le bouton ci-dessous
+  </p>
+  <div class="button-wrap">
+    <a href="{{confirmation_url}}" class="explore">
+      Confirmer l'inscription
+    </a>
+  </div>
+  <p>Si le bouton ne passe pas, vous pouvez copier le lien suivant : <a href="{{confirmation_url}}">{{ confirmation_url }}</a></p>
+</div>

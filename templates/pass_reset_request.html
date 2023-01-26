@@ -1,0 +1,33 @@
+<br /><br /><hr />
+<div class="hgroup">
+  <p>
+    <span class="raised">Réinitialisation du mot de passe</span>
+      Une requête de réinitialisation de mot de passes à été initialisé. Vous avez deux heures pour réinitialiser.<br/>
+      Si vous ne réinitialisez pas votre mot de passes dans les deux heures, vous devriez relancer une nouvelle requête. <br/>
+      Pour poursuivre le processus de réinitialisation bien vouloir cliquer sur le bouton suivant:<br>
+  </p>
+  <div class="button-wrap">
+    <a href="{{reset_url}}" class="explore">
+      Réinitialiser maintenant
+    </a>
+  </div>
+  <p>Si le bouton ne passe pas, vous pouvez copier le lien suivant : <a href="{{reset_url}}">{{ reset_url }}</a></p>
+</div>
+
+<div class="hgroup">
+  <table style="width: 100%">
+      <tr>
+          <th style="text-align: left">Adresse IP</th>
+          <th style="text-align:right;font-weight: 100;">{{ ip_address }}</th>
+      </tr>
+      <tr>
+          <th style="text-align: left">Utilisateur</th>
+          <th style="text-align:right;font-weight: 100;"><a href="mailto:{{ user_email }}">{{ user_email }}</a></th>
+      </tr>
+      <tr>
+          <th style="text-align: left">Date</th>
+          <th style="text-align:right;font-weight: 100;">{{ day_date }}</th>
+      </tr>
+  </table>
+</div>
+<br /><hr />
